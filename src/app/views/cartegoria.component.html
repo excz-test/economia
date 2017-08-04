@@ -1,0 +1,23 @@
+{{titulo}}
+<div id="dv_categoria">
+    
+    <div id="dv_categoria_ingresos" style="border:solid 1px #058941">
+    
+            <div *ngFor="let catIngresos of categorias" >
+                <span *ngIf="catIngresos.tipo=='I'">
+                    {{catIngresos.id}} - {{catIngresos.tipo}} - {{catIngresos.color}} - {{catIngresos.descripcion}} - {{catIngresos.icono}}
+                - {{catIngresos.estado}}
+                </span>
+            </div>
+    </div>
+        <div style="border:solid 1px #074587">
+            <div *ngFor="let catIngresos of categorias" >
+                <span *ngIf="catIngresos.tipo=='E'">
+                    {{catIngresos.id}} - {{catIngresos.tipo}} - {{catIngresos.color}} - {{catIngresos.descripcion}} - {{catIngresos.icono}}
+                - {{catIngresos.estado}}
+                </span>
+            </div>
+    
+
+    </div>
+</div>
