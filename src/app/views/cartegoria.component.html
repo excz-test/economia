@@ -1,23 +1,76 @@
 {{titulo}}
 <div id="dv_categoria">
-    
+
     <div id="dv_categoria_ingresos" style="border:solid 1px #058941">
-    
-            <div *ngFor="let catIngresos of categorias" >
-                <span *ngIf="catIngresos.tipo=='I'">
+        <button>Añadir</button>
+        <div *ngFor="let catIngresos of categorias">
+            <span *ngIf="catIngresos.tipo=='I'">
                     {{catIngresos.id}} - {{catIngresos.tipo}} - {{catIngresos.color}} - {{catIngresos.descripcion}} - {{catIngresos.icono}}
-                - {{catIngresos.estado}}
+                - {{catIngresos.estado}}  <button>Editar</button><button>Eliminar</button>
                 </span>
-            </div>
+        </div>
     </div>
-        <div style="border:solid 1px #074587">
-            <div *ngFor="let catIngresos of categorias" >
-                <span *ngIf="catIngresos.tipo=='E'">
-                    {{catIngresos.id}} - {{catIngresos.tipo}} - {{catIngresos.color}} - {{catIngresos.descripcion}} - {{catIngresos.icono}}
-                - {{catIngresos.estado}}
-                </span>
-            </div>
-    
+    <div style="border:solid 1px #074587">
+        <div *ngFor="let catIngresos of categorias">
+            <span *ngIf="catIngresos.tipo=='E'">
+                    {{catIngresos.id}} - {{catIngresos.tipo}} - {{catIngresos.color}}
+                    <span style="width: 50px; border:solid 1px #256984">
+                        
+                    </span> - {{catIngresos.icono}} - {{catIngresos.estado}}
+            </span>
+        </div>
 
     </div>
-</div>
+    <h3 class="first">Addons</h3>
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                <input type="text" pInputText placeholder="Username">
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">$</span>
+                <input type="text" pInputText placeholder="Price">
+                <span class="ui-inputgroup-addon">.00</span>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">www</span>
+                <input type="text" pInputText placeholder="Website">
+            </div>
+        </div>
+    </div>
+    <!-- <p-messages [(value)]="msgs"></p-messages> -->
+    <p-growl [(value)]="msgs"></p-growl>
+    <button pButton label="Show" (click)="show()"></button>
+
+
+    <button type="button" (click)="clear()">Hide</button>
+    <button pButton type="button" label="Click"></button>
+
+    <div class="ui-g">
+        <div class="ui-g-4">Col1</div>
+        <div class="ui-g-4">Col2</div>
+        <div class="ui-g-4">Col3</div>
+    </div>
+
+    <h1> tabla estatica </h1>
+    <p-dataTable [value]="categorias" [rows]="5" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[2,4,6]" [responsive]="true"
+        [stacked]="stacked" [editable]="true">
+        <p-column field="id" header="id"></p-column>
+        <p-column field="tipo" header="tipo"></p-column>
+        <p-column field="color" header="color">
+            <ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">
+                <span>{{car[col.field]}}</span>
+            </ng-template>
+        </p-column>
+        <p-column field="descripcion" header="descripcion" [filter]="true" filterPlaceholder="Search"
+        [editable]="true" [style]="{'overflow':'visible'}"></p-column>
+        <p-column field="icono" header="icono" ></p-column>
+        <p-column field="estado" header="estado"></p-column>
+    </p-dataTable>
